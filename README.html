@@ -1,0 +1,112 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title></title>
+<meta name="generator" content="HTML::TextToHTML v2.5201"/>
+</head>
+<body>
+<p># A large-scale spiking neural network model of the basal ganglia circuitry. 
+</p>
+<p>This model integrates fine-tuned models of phenomenological (Izhikevich) spiking neurons that correspond to different sub-types of cells within the BG nuclei, electrical and conductance-based chemical synapses that include short-term plasticity and neuromodulation, as well as anatomically-derived striatal connectivity. 
+</p>
+<p>In particular, this model comprises 10 neural populations that correspond to the four major nuclei of the biological basal ganglia and form their canonical circuit. These include the striatum (modelled with higher detail than the other groups) and the subthalamic nucleus (STN), the two inputs of the basal gnaglia, the external part of the globus pallidus (GPe), as well as the substantia nigra pars reticulata (SNr), one of the two output structures. Furthermore, the effect of the pars compacta part of the substantia nigra (SNc) is realized through the concentration of the neurotransmitter dopamine in the different parts of the network. The network is divided into three microscopic channels, which are mutually inhibited and used to represent different action requests. A full description of this model can be found in the first two published manuscripts that follow.
+</p>
+<p>A list of citable manuscripts that used this model:
+</p>
+<ul>
+  <li>Fountas, Zafeirios. "<em>Action selection in the rhythmic brain: The role of the basal ganglia and tremor.</em>" PhD Thesis, Imperial College London (2016).
+  </li><li>Fountas, Zafeirios, and Murray Shanahan. "<em>The role of cortical oscillations in a spiking neural model of the basal ganglia.</em>" <em>Under review</em>, PLOS ONE
+  </li><li>Fountas, Zafeirios, and Murray Shanahan. "<em>Assessing Selectivity in the Basal Ganglia: The 'Gearbox' Hypothesis.</em>" bioRxiv (2017): 197129.
+</li></ul>
+<p>The latest version of this project can be also found on github: <a href="https://github.com/zfountas/basal-ganglia-model">https://github.com/zfountas/basal-ganglia-model</a>
+</p>
+<p>## Prerequisites
+</p>
+<p>The project's prerequisites include the python2.7 libraries brian, numpy and matplotlib. To install these libraries on a linux machine please open a terminal and type:
+</p>
+<p>```<br/>
+(sudo) pip install -r requirements.txt<br/>
+```
+</p>
+<p>## Run simulations
+</p>
+<p>To run a simulation please type:
+</p>
+<p>```<br/>
+./bgrun -argument1 -argument2 ...<br/>
+```
+</p>
+<p>where the available arguments are given as:
+</p>
+<p><strong>### BASIC ARGUMENTS</strong>
+</p><ul>
+  <li>--help: <em>shows the basic arguments</em>
+  </li><li>-fr {value}: *is the frequency of cortical oscillations *
+  </li><li>-ph {value}: <em>is the phase offset between two different cortical inputs</em>
+  </li><li>-dop {value}: <em>is the overall level of dopamine in the system</em>
+  </li><li>-file {data_file_name}: <em>is optional, and represents the name of the file where data will be stored</em>
+  </li><li>-print: <em>Ff defined, it activates a verbose mode</em>
+  </li><li>-plots: <em>If defined, it will generate plots of the simulation</em>
+  </li><li>-seed {value/random}: <em>specifies the random seed of the simulation</em>
+  </li><li>-duration {value}: <em>specifies the duration of the simulation</em>
+  </li><li>-fr1 {value}: <em>is the frequency of the first cortical input</em>
+  </li><li>-end {value}:
+</li></ul>
+<p><strong>### INPUT TYPES </strong>
+</p><ul>
+  <li>-initial_period: <em>If defined, the model runs for a initial period of 500ms with only tonic (cortical) stimulation</em>
+  </li><li>-random_walk: <em>If defined, the intensity of cortical input follows a random walk</em>
+</li></ul>
+<p><strong>### RECORDING OPTIONS </strong>
+</p><ul>
+  <li>-rec_rasters: <em>If defined, records spike trains for all populations</em>
+  </li><li>-rec_GPe_types: <em>If defined, records different types of GPe neurons individually</em>
+  </li><li>-rec_bins: <em>If defined, records binned spikes for each neuron group</em>
+</li></ul>
+<p><strong>### INPUT MODES </strong>
+</p><ul>
+  <li>-tonic: <em>If active, the model will run with only tonic cortical stimulation</em>
+  </li><li>-one_channel: <em>If active, only one channel receives stimulation</em>
+  </li><li>-ramp: <em>If active, the model receives ramped stimulation</em>
+  </li><li>-GG_stn_gpe:
+  </li><li>-GG_gpe_stn:
+</li></ul>
+<p><strong>### AMPLITUTE OF INPUTS </strong>
+</p><ul>
+  <li>-T1base {value}: <em>Lowest value of the firing rate of the cortical input in channel 1</em>
+  </li><li>-T2base {value}: <em>Lowest value of the firing rate of the cortical input in channel 2</em>
+  </li><li>-T3base {value}: <em>Lowest value of the firing rate of the cortical input in channel 3</em>
+  </li><li>-T1max {value}: <em>Highest value of the firing rate of the cortical input in channel 1</em>
+  </li><li>-T2max {value}: <em>Highest value of the firing rate of the cortical input in channel 2</em>
+</li></ul>
+<p><strong>### REST </strong>
+</p><ul>
+  <li>-pd_off_state:
+  </li><li>-weight_Bahuguna:
+  </li><li>-P_striatum_weight {value}:
+  </li><li>-GPe_density {value1,2} {value3}: <em>Density of the 3 GPe neuron types</em>
+  </li><li>-gpe_type {A/B/C}: <em>Allows only one GPe neuron type in the simulation</em>
+  </li><li>-plasticity {True/False}: <em>If True, short-term synaptic plasticity activates</em>
+</li></ul>
+<p>## Authors
+</p>
+<ul>
+  <li>**[Zafeirios Fountas](<a href="https://www.doc.ic.ac.uk/~zf509/">https://www.doc.ic.ac.uk/~zf509/</a>)** - <em>Initial work and author of the PhD thesis</em>
+</li></ul>
+<p>## License
+</p>
+<p>This project is licensed under the GLUv3 License - see the [LICENSE](LICENSE) file for details.
+</p>
+<p>## Acknowledgments
+</p>
+<ul>
+  <li>**Murray Shanahan** who was Zafeirios' PhD supervisior and co-author of published work
+  </li><li>**Mark Humphries** who provided valuable feedback and inspiration
+  </li><li>**Jeanette Hellgren Kotaleski** who was the first PhD examiner
+  </li><li>**Rob Leech** who was the second PhD examiner
+  </li><li>**EPSRC** and **Imperial College London** for providing funding
+</li></ul>
+
+</body>
+</html>
